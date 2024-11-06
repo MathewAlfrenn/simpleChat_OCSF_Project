@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "java (buildArtifact)",
+			"targetPath": "${workspaceFolder}/${workspaceFolderBasename}.jar",
+			"elements": [
+				"${compileOutput:OCSF}",
+				"${dependencies:OCSF}",
+				"${compileOutput:simpleChat}",
+				"${dependencies:simpleChat}"
+			],
+			"problemMatcher": [],
+			"label": "java (buildArtifact): eclipse_work",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}

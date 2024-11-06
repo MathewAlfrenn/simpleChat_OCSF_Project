@@ -48,7 +48,7 @@ public class EchoServer extends AbstractServer
    * @param client The connection from which the message originated.
    */
   public void handleMessageFromClient(Object msg, ConnectionToClient client) {
-    System.out.println("Message received: " + msg + " from " + client);
+    System.out.println("Message received: " + msg + " from " + client.getInfo("loginId"));
 
     // Check if the message is a string
     if (msg instanceof String) {
@@ -78,13 +78,14 @@ public class EchoServer extends AbstractServer
         
         //send to other clients
         String loginId = (String) client.getInfo("loginId");
-        String prefixedMessage = loginId + ": " + message;
-        this.sendToAllClients(prefixedMessage); // Send the message to all clients
+        String publicMessage = loginId + ": " + message;
+        this.sendToAllClients(publicMessage); // Send the message to all clients
 
     }
 }
     
   
+
   private void sendErrorMessage(ConnectionToClient client, String errorMessage) {
     try {
         client.sendToClient("Error: " + errorMessage);
@@ -172,7 +173,7 @@ public class EchoServer extends AbstractServer
 
     @Override
     synchronized protected void clientDisconnected(ConnectionToClient client) {
-        System.out.println("Client disconnected: " + client);
+        System.out.println("Client disconnected: " + client.getInfo("loginId"));
     }
 
     public void quitServer() {

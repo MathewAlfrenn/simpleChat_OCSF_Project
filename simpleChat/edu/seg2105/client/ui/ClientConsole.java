@@ -123,10 +123,9 @@ public class ClientConsole implements ChatIF
    */
   public static void main(String[] args) 
 {
-    String host = "";
+    String host ="";
     int port = DEFAULT_PORT;
-    String loginId = "Anonymous";  // Default loginId is "Anonymous"
-
+    String loginId = null;
     // Ensure that loginId is provided as the first argument
     try
     {
@@ -134,7 +133,7 @@ public class ClientConsole implements ChatIF
     }
     catch (ArrayIndexOutOfBoundsException e)
     {
-        System.out.println("Error: Login ID is required. Using default: 'Anonymous'");
+      System.out.println("No login ID specified");
     }
 
     // Try to get host from command-line argument (second argument is host)
@@ -144,7 +143,7 @@ public class ClientConsole implements ChatIF
     }
     catch (ArrayIndexOutOfBoundsException e)
     {
-        host = "localhost";  // Default to localhost if no host is provided
+        host = "localhost";  
     }
 
     // Try to get port from command-line argument (third argument is port)
@@ -162,8 +161,16 @@ public class ClientConsole implements ChatIF
     }
 
     // Create ClientConsole instance with host, port, and loginId
+    if(loginId==null){
+      System.out.println("ERROR - No login ID specified. Connection aborted.");
+    }
+    else{
+    	System.out.println("Id : "+ loginId);
+    	System.out.println("port: "+ port);
+    	System.out.println("host : "+ host);
     ClientConsole chat = new ClientConsole(host, port, loginId);
     chat.accept();  // Wait for console data
+  }
 }
 
 }
