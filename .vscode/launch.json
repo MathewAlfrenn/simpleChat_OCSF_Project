@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "ClientConsole",
+            "request": "launch",
+            "mainClass": "edu.seg2105.client.ui.ClientConsole",
+            "projectName": "simpleChat"
+        },
+        {
+            "type": "java",
+            "name": "EchoServer",
+            "request": "launch",
+            "mainClass": "edu.seg2105.edu.server.backend.EchoServer",
+            "projectName": "simpleChat"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "your.package.MainClass",
+            "args": [
+                "arg1",
+                "arg2",
+                "arg3"
+            ]
+        }
+    ]
+}
